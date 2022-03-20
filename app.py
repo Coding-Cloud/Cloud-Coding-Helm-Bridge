@@ -1,16 +1,15 @@
-from flask import Flask
+from flask import Flask, request
 
 from helmbridge.helm import start_code_runner, stop_code_runner
 
 app = Flask(__name__)
 
 
-# TODO take the repository path in body and set it in the values
-
 @app.route('/<project_id>/<language>', methods=['POST'])
 def start_runner(project_id, language):
     try:
-        start_code_runner(project_id, language)
+        repository_path = request.get_json().get('repo-path')
+        start_code_runner(project_id, language, repository_path)
         return 'Installed'
     except Exception as e:
         return 'Failed with error ' + str(e)

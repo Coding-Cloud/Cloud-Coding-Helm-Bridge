@@ -6,8 +6,10 @@ language_values = {'angular': 'angular-runner/values.yaml',
                    'react': 'react-runner/values.yaml'}
 
 
-def get_values(language):
-    return merge_dict(read_default_values(), read_language_values(language))
+def get_values(language, repository_path):
+    values = merge_dict(read_default_values(), read_language_values(language))
+    values['project']['path'] = repository_path
+    return values
 
 
 def read_default_values():
