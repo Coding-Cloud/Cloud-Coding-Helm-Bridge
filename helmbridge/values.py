@@ -2,18 +2,18 @@ import os
 
 import yaml
 
-language_values = {'angular': 'angular-runner/values.yaml',
-                   'react': 'react-runner/values.yaml'}
+language_values = {'angular': '/angular-runner/values.yaml',
+                   'react': '/react-runner/values.yaml'}
 
 
-def get_values(language, repository_path):
+def get_values(language, project_id):
     values = merge_dict(read_default_values(), read_language_values(language))
-    values['project']['path'] = repository_path
+    values['project']['id'] = project_id
     return values
 
 
 def read_default_values():
-    with open(os.environ['INFRA_PATH'] + 'code-runner/values.yaml', 'r') as stream:
+    with open(os.environ['INFRA_PATH'] + '/code-runner/values.yaml', 'r') as stream:
         return yaml.safe_load(stream)
 
 
@@ -32,7 +32,7 @@ def merge_dict(a, b, path=None):
             elif a[key] == b[key]:
                 pass
             else:
-                raise Exception('Conflict at %s' % '.'.join(path + [str(key)]))
+                a[key] = b[key]
         else:
             a[key] = b[key]
     return a

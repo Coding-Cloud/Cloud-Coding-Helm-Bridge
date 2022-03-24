@@ -5,8 +5,8 @@ from avionix import ChartBuilder, ChartInfo, ChartDependency, Values
 from helmbridge.values import get_values
 
 
-def start_code_runner(project_id, language, repository_path):
-    merged_values = get_values(language, repository_path)
+def start_code_runner(project_id, language):
+    merged_values = get_values(language, project_id)
     builder = ChartBuilder(
         ChartInfo(
             api_version='v2',

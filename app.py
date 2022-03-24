@@ -8,8 +8,7 @@ app = Flask(__name__)
 @app.route('/<project_id>/<language>', methods=['POST'])
 def start_runner(project_id, language):
     try:
-        repository_path = request.get_json().get('repo-path')
-        start_code_runner(project_id, language, repository_path)
+        start_code_runner(project_id, language)
         return 'Installed'
     except Exception as e:
         return 'Failed with error ' + str(e)
