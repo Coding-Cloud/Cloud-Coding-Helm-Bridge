@@ -1,6 +1,6 @@
 FROM alpine/helm:latest
 
-RUN apk add --no-cache python3 py3-pip
+RUN apk add --no-cache python3 py3-pip git
 
 COPY ./requirements.txt /app/requirements.txt
 
@@ -11,6 +11,7 @@ RUN pip install -r requirements.txt
 COPY . /app
 
 ENV INFRA_PATH=/home/infra
+ENV REPOSITORIES_PATH=/data
 
 VOLUME /home/infra
 VOLUME /root/.kube
