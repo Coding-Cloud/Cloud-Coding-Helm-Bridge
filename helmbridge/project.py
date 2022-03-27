@@ -3,11 +3,11 @@ import shutil
 
 from git import Repo
 
-templates = {'angular': 'https://github.com/tomastrajan/angular-ngrx-material-starter.git'}
+from helmbridge.config import language_config
 
 
 def create_project(project_id, language):
-    cloned_repo = Repo.clone_from(templates[language], os.path.join(os.environ['REPOSITORIES_PATH'], project_id))
+    cloned_repo = Repo.clone_from(language_config[language]['template'], os.path.join(os.environ['REPOSITORIES_PATH'], project_id))
     print(os.listdir(os.path.join(os.environ['REPOSITORIES_PATH'], project_id)))
     print(os.listdir(os.path.join(os.environ['REPOSITORIES_PATH'])))
     print(cloned_repo)

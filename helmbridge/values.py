@@ -2,8 +2,7 @@ import os
 
 import yaml
 
-language_values = {'angular': '/angular-runner/values.yaml',
-                   'react': '/react-runner/values.yaml'}
+from helmbridge.config import language_config
 
 
 def get_values(language, project_id):
@@ -18,7 +17,7 @@ def read_default_values():
 
 
 def read_language_values(language):
-    with open(os.environ['INFRA_PATH'] + language_values[language], 'r') as stream:
+    with open(os.environ['INFRA_PATH'] + language_config[language]['values'], 'r') as stream:
         return yaml.safe_load(stream)
 
 
