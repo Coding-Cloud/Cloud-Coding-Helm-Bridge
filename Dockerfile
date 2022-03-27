@@ -12,6 +12,7 @@ COPY . /app
 
 ENV INFRA_PATH=/home/infra
 ENV REPOSITORIES_PATH=/data
+ENV API_URL=localhost:3000
 
 VOLUME /home/infra
 VOLUME /root/.kube
