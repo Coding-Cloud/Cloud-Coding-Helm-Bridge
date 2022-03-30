@@ -1,7 +1,7 @@
 import os
 import shutil
-import requests
 
+import requests
 from git import Repo
 
 from helmbridge.config import language_config
