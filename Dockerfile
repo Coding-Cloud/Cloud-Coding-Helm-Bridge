@@ -14,6 +14,7 @@ ENV INFRA_PATH=/home/infra
 ENV REPOSITORIES_PATH=/data
 ENV API_URL=localhost:3000
 
+VOLUME /data
 VOLUME /home/infra
 VOLUME /root/.kube
 VOLUME /root/.helm
