@@ -8,8 +8,11 @@ from helmbridge.config import language_config
 
 
 def create_project(project_id, language):
-    Repo.clone_from(language_config[language]['template'],
-                    os.path.join(os.environ['REPOSITORIES_PATH'], project_id))
+    repo = Repo.clone_from(language_config[language]['template'],
+                           os.path.join(os.environ['REPOSITORIES_PATH'], project_id))
+    repo.init()
+    repo.index.add('.')
+    repo.index.commit('1 - Initial version')
     requests.patch(os.environ['API_URL'] + '/projects/' + project_id + '/initialised')
 
 
