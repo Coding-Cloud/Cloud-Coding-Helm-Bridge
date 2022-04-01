@@ -1,6 +1,6 @@
 import threading
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 from helmbridge.helm import start_code_runner, stop_code_runner
 from helmbridge.project import create_project, delete_project
@@ -59,7 +59,7 @@ def add_version(project_id):
 @app.route('/versions/<project_id>', methods=['GET'])
 def list_versions(project_id):
     try:
-        return get_project_versions(project_id)
+        return jsonify(get_project_versions(project_id))
     except Exception as e:
         return 'Failed to get project versions with exception ' + str(e) + '\n'
 
