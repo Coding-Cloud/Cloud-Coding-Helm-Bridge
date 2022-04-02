@@ -11,10 +11,12 @@ def add_project_version(project_id, version, title):
 
 
 def get_project_versions(project_id):
-    repo = Repo(os.path.join(os.environ['REPOSITORIES_PATH'], project_id))
+    repo_path = os.path.join(os.environ['REPOSITORIES_PATH'], project_id)
+    repo = Repo(repo_path)
     return [commit.message for commit in repo.iter_commits(rev=repo.head.reference)]
 
 
-def rollback_project_version(project_id, versions=1):
-    repo = Repo(os.path.join(os.environ['REPOSITORIES_PATH'], project_id))
-    repo.head.reset('--hard HEAD~{versions}'.format(versions=versions), index=True, working_tree=True)
+def rollback_project_version(project_id, versions):
+    repo_path = os.path.join(os.environ['REPOSITORIES_PATH'], project_id)
+    repo = Repo(repo_path)
+    repo.git.reset('--hard', 'HEAD~{versions}'.format(versions=versions))
