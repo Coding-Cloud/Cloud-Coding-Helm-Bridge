@@ -12,8 +12,8 @@ def create_project(project_id, language):
     Repo.clone_from(language_config[language]['template'], repo_path)
     shutil.rmtree(os.path.join(repo_path, '.git'))
     repo = Repo.init(repo_path)
-    repo.index.add(repo_path)
-    repo.index.commit('1 - Initial version')
+    repo.git.add(all=True)
+    repo.git.commit('-m', '1 - Initial version')
     requests.patch(os.environ['API_URL'] + '/projects/' + project_id + '/initialised')
 
 
