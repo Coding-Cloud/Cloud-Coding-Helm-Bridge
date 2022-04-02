@@ -64,7 +64,7 @@ def list_versions(project_id):
         return 'Failed to get project versions with exception ' + str(e) + '\n'
 
 
-@app.route('/versions/<project_id>/<version>', methods=['PATCH'])
+@app.route('/versions/<project_id>/<versions>', methods=['PATCH'])
 def rollback_version(project_id, versions):
     try:
         rollback_project_version(project_id, versions)
