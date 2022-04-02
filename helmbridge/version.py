@@ -6,7 +6,7 @@ from git import Repo
 def add_project_version(project_id, version, title):
     repo = Repo(os.path.join(os.environ['REPOSITORIES_PATH'], project_id))
     repo.index.add('.')
-    repo.commit('{version} - {title}'.format(version=version, title=title))
+    repo.index.commit('{version} - {title}'.format(version=version, title=title))
 
 
 def get_project_versions(project_id):

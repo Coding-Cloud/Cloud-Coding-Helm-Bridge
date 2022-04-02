@@ -48,8 +48,8 @@ def remove_project(project_id):
 @app.route('/versions/<project_id>', methods=['POST'])
 def add_version(project_id):
     try:
-        version = request.get_json()["version"]
-        title = request.get_json()["title"]
+        version = request.get_json()['version']
+        title = request.get_json()['title']
         add_project_version(project_id, version, title)
         return 'Version added\n'
     except Exception as e:
