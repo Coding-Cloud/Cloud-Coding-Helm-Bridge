@@ -17,4 +17,4 @@ def get_project_versions(project_id):
 
 def rollback_project_version(project_id, versions=1):
     repo = Repo(os.path.join(os.environ['REPOSITORIES_PATH'], project_id))
-    repo.head.reset('--hard HEAD~versions'.format(versions), index=True, working_tree=True)
+    repo.head.reset('--hard HEAD~{versions}'.format(versions=versions), index=True, working_tree=True)
