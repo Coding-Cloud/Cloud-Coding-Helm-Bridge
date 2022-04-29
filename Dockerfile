@@ -10,9 +10,10 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-ENV INFRA_PATH=/home/infra
 ENV REPOSITORIES_PATH=/data
 ENV API_URL=localhost:3000
+ENV VALUES_PATH=/home/infra/values
+ENV CODE_RUNNER_PATH=/home/infra/code-runner
 
 VOLUME /data
 VOLUME /home/infra

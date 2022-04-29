@@ -17,7 +17,7 @@ def start_code_runner(project_id, language):
                 ChartDependency(
                     'code-runner',
                     '0.1.0',
-                    'file://' + os.environ['INFRA_PATH'] + '/code-runner',
+                    'file://' + os.environ['CODE_RUNNER_PATH'],
                     'code-runner',
                     is_local=True,
                 ),
