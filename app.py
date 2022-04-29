@@ -13,8 +13,10 @@ app = Flask(__name__)
 def start_runner(project_id, language):
     try:
         start_code_runner(project_id, language)
+        app.logger.info("Installed")
         return 'Installed\n'
     except Exception as e:
+        app.logger.error(e)
         return 'Failed with error ' + str(e) + '\n'
 
 
@@ -24,6 +26,7 @@ def stop_runner(project_id):
         stop_code_runner(project_id)
         return 'Deleted\n'
     except Exception as e:
+        app.logger.error(e)
         return 'Failed to uninstall chart with exception ' + str(e) + '\n'
 
 
@@ -33,6 +36,7 @@ def init_project(project_id, language):
         threading.Thread(target=create_project, args=(project_id, language)).start()
         return 'Project initialising\n'
     except Exception as e:
+        app.logger.error(e)
         return 'Failed to create project with exception ' + str(e) + '\n'
 
 
@@ -42,6 +46,7 @@ def remove_project(project_id):
         delete_project(project_id)
         return 'Project deleted\n'
     except Exception as e:
+        app.logger.error(e)
         return 'Failed to delete project with exception ' + str(e) + '\n'
 
 
@@ -53,6 +58,7 @@ def add_version(project_id):
         add_project_version(project_id, version, title)
         return 'Version added\n'
     except Exception as e:
+        app.logger.error(e)
         return 'Failed to add the version with exception ' + str(e) + '\n'
 
 
@@ -61,6 +67,7 @@ def list_versions(project_id):
     try:
         return jsonify(get_project_versions(project_id))
     except Exception as e:
+        app.logger.error(e)
         return 'Failed to get project versions with exception ' + str(e) + '\n'
 
 
@@ -70,6 +77,7 @@ def rollback_version(project_id, versions):
         rollback_project_version(project_id, versions)
         return 'Project rollback succeeded\n'
     except Exception as e:
+        app.logger.error(e)
         return 'Failed to rollback the version with exception ' + str(e) + '\n'
 
 
