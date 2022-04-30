@@ -19,6 +19,7 @@ def create_project(project_id, language):
         repo.git.add(all=True)
         repo.index.commit('1 - Initial version')
         requests.patch(os.environ['API_URL'] + 'projects/' + project_id + '/initialised')
+        os.system('chmod -R 666 ' + repo_path)
     except Exception as e:
         logger.error(e)
 
