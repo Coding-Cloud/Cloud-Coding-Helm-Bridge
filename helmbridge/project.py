@@ -18,7 +18,7 @@ def create_project(project_id, language):
         repo = Repo.init(repo_path)
         repo.git.add(all=True)
         repo.index.commit('1 - Initial version')
-        requests.patch(os.environ['API_URL'] + '/projects/' + project_id + '/initialised')
+        requests.patch(os.environ['API_URL'] + 'projects/' + project_id + '/initialised')
     except Exception as e:
         logger.error(e)
 
