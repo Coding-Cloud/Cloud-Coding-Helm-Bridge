@@ -12,7 +12,7 @@ def get_values(language, project_id):
 
 
 def read_default_values():
-    with open(os.path.join(os.environ['VALUES_PATH'], '/code-runner-values.yaml'), 'r') as stream:
+    with open(os.path.join(os.environ['VALUES_PATH'], 'code-runner-values.yaml'), 'r') as stream:
         return yaml.safe_load(stream)
 
 
