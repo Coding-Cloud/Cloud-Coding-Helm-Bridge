@@ -33,7 +33,8 @@ def stop_runner(project_id):
 @app.route('/projects/<project_id>/<language>', methods=['POST'])
 def init_project(project_id, language):
     try:
-        threading.Thread(target=create_project, args=(project_id, language)).start()
+        queryUrlParams = request.args.get('queryUrlParams')
+        threading.Thread(target=create_project, args=(project_id, language, queryUrlParams)).start()
         return 'Project initialising\n'
     except Exception as e:
         app.logger.error(e)

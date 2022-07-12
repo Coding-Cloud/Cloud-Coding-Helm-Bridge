@@ -10,9 +10,9 @@ from helmbridge.config import language_config
 logger = Flask(__name__).logger
 
 
-def create_project(project_id, language):
+def create_project(project_id, language, repo_path):
     try:
-        repo_path = os.path.join(os.environ['REPOSITORIES_PATH'], project_id)
+        repo_path = os.path.join(os.environ['REPOSITORIES_PATH'], project_id) if not repo_path else repo_path
         Repo.clone_from(language_config[language]['template'], repo_path)
         shutil.rmtree(os.path.join(repo_path, '.git'))
         repo = Repo.init(repo_path)
