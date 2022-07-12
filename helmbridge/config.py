@@ -3,4 +3,6 @@ language_config = {'ANGULAR': {'values': 'angular-values.yaml',
                    'REACT': {'values': 'react-values.yaml',
                              'template': 'https://github.com/soumyajit4419/Portfolio.git'},
                    'QUARKUS': {'values': 'quarkus-values.yaml',
-                               'template': 'https://github.com/Coding-Cloud/quarkus-template.git'}}
+                               'template': 'https://github.com/Coding-Cloud/quarkus-template.git'},
+                   'NESTJS': {'values': 'nest-values.yaml',
+                              'template': 'https://github.com/Coding-Cloud/nest-template.git'}}
