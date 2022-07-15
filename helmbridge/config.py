@@ -5,4 +5,6 @@ language_config = {'ANGULAR': {'values': 'angular-values.yaml',
                    'QUARKUS': {'values': 'quarkus-values.yaml',
                                'template': 'https://github.com/Coding-Cloud/quarkus-template.git'},
                    'NESTJS': {'values': 'nest-values.yaml',
-                              'template': 'https://github.com/Coding-Cloud/nest-template.git'}}
+                              'template': 'https://github.com/Coding-Cloud/nest-template.git'},
+                   'FLASK': {'values': 'flask-values.yaml',
+                             'template': 'https://github.com/Coding-Cloud/flask-template.git'}}
