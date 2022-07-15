@@ -1,8 +1,11 @@
 import os
 
 from avionix import ChartBuilder, ChartInfo, ChartDependency, Values
+from flask import Flask
 
 from helmbridge.values import get_values
+
+logger = Flask(__name__).logger
 
 
 def start_code_runner(project_id, language):
@@ -26,6 +29,7 @@ def start_code_runner(project_id, language):
         [],
         values=Values({'code-runner': merged_values})
     )
+    logger.info(builder)
     builder.install_chart({'dependency-update': None})
 
 
