@@ -29,7 +29,6 @@ def start_code_runner(project_id, language):
         [],
         values=Values({'code-runner': merged_values})
     )
-    logger.info(builder)
     builder.install_chart({'dependency-update': None})
 
 
